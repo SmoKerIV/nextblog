@@ -1,0 +1,22 @@
+.home .cover{
+    height: 400px;
+    background-color: #efefef;
+    position: relative;
+}
+.home .cover .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.home .cover .overlay .title {
+    margin-top: 200px;
+}
+.home .cover .overlay .title h1{
+    font-size: 30px;
+}
+.home .cover .overlay .title p{
+    font-size: 30px;
+}

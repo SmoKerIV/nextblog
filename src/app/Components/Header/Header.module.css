@@ -1,0 +1,28 @@
+.header {
+    border-bottom: 1px solid #000;
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0rem;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    margin-left: 24px;
+    color: #000;
+    font-size: 18px;
+    transition: 0.5s;
+
+}
+
+.nav ul li a:hover {
+    color: blue;
+}
