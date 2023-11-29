@@ -1,5 +1,9 @@
 .header {
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #a0a0a0;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1;
 }
 
 .head {
