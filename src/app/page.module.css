@@ -23,8 +23,11 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5px 32px;
-    margin-top: -60px;
     position: relative;
+    animation: fadIn 1.5s;
+}
+.over {
+        margin-top: -60px;
 }
 .loading{
     display: flex;
@@ -56,6 +59,19 @@
     animation: spin 0.5s infinite linear;
 }
 
+@media screen and (max-width: 1240px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 60px 40px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 60px 0;
+    }
+}
 @keyframes flippx {
 
     0%,
@@ -72,5 +88,14 @@
 @keyframes spin {
     100% {
         transform: rotate(360deg);
+    }
+}
+@keyframes fadIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }

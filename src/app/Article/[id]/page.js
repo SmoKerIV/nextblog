@@ -14,16 +14,10 @@ async function getData(id) {
   }
   return res.json();
 }
-export async function generateMetadata({ params, searchParams }, parent) {
-  // read route params
+export async function generateMetadata({ params }, parent) {
   const id = params.id;
-
-  // fetch data
   const data = await getData(id);
-
-  // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
-
   return {
     title: data.blog.title,
     description: data.blog.description,

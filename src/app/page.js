@@ -1,52 +1,28 @@
-"use client";
+'use client';
 import styles from "./page.module.css";
 import Header from "./Components/Header/Header";
 import { Container } from "./Components/Container/Container";
 import { Card } from "./Components/Card/Card";
 import Footer from "./Components/Footer/Footer";
-import { useState, useEffect } from "react";
+import { useState ,useEffect } from 'react';
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
+  const [skip, setSkip] = useState(0);
 
-  const getData = async (pageNumber) => {
-    try {
-      const res = await fetch(
-        `https://api.slingacademy.com/v1/sample-data/blog-posts?page=${pageNumber}`
-      );
-      if (!res.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      const data = await res.json();
-      setBlogs((prevBlogs) => [...prevBlogs, ...data.blogs]);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.offsetHeight
-    ) {
-      setPage((prevPage) => prevPage + 1);
-    }
-  };
-
-  useEffect(() => {
-    getData(page);
-  }, [page]);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+    const getData = () => {
+      fetch(`https://api.slingacademy.com/v1/sample-data/blog-posts?limit=9&offset=${skip}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setBlogs(data.blogs);
+          setLoading(false);
+        });
     };
-  }, [page]);
-
+    useEffect(() => {
+      getData();
+    }, [skip]);
   return (
     <div className={styles.home}>
       <Header />
@@ -61,15 +37,26 @@ export default function Home() {
         </div>
       </div>
       <Container>
-        {loading && (
-          <div className={styles.loading}>
-            <span className={styles.loader}></span>
+        <div className={styles.over}>
+        <InfiniteScroll
+          dataLength={blogs.length}
+          next={() => {
+            setSkip(skip + 9);
+          }}
+          hasMore={true}
+        >
+          {loading && (
+            <div className={styles.loading}>
+              {" "}
+              <span className={styles.loader}></span>
+            </div>
+          )}
+          <div className={styles.grid}>
+            {blogs.map((blog, i) => (
+              <Card key={i} blog={blog} />
+            ))}
           </div>
-        )}
-        <div className={styles.grid}>
-          {blogs.map((blog, i) => (
-            <Card key={i} blog={blog} />
-          ))}
+        </InfiniteScroll>
         </div>
       </Container>
       <Footer />

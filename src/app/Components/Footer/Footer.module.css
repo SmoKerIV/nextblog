@@ -26,3 +26,21 @@
 .icon{
     font-size: 40px;
 }
+@media screen and (max-width: 480px) {
+    .text {
+        font-size: 18px;
+    }
+
+    .icon {
+        font-size: 25px;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .icons {
+        gap: 20px 40px;
+    }
+}

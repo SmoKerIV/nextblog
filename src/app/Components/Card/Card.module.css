@@ -1,12 +1,11 @@
 
 .card {
     height: 320px;
-    animation: fadeIN 1.5s;
+    animation: fadIn 1.5s;
 }
 
 .card .img {
     height: 220px;
-    background-color: #d9d9d9;
     position: relative;
 }
 .card .img img{
@@ -21,14 +20,6 @@
     color:#666666;
 }
 
-.head .p {
-    color: #666666;
-}
-
-.head {
-    margin: 10px 0;
-    padding: 0;
-}
 .card .cardfoot{
     display: flex;
     align-items: center;
@@ -39,14 +30,12 @@
     text-decoration: none;
     font-size:18px;
 }
-@keyframes fadeIn {
+@keyframes fadIn {
     0% {
         opacity: 0;
-        transform: translateY(10px);
     }
+
     100% {
         opacity: 1;
-        transform: translateY(10px);
     }
 }
-    

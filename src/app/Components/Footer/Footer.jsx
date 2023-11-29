@@ -17,7 +17,7 @@ const Footer = () => {
             <a href="#">
               <FaSquareTwitter className={styles.icon} />
             </a>
-            <a href="#">
+            <a href="https://www.instagram.com/aon.iq/">
               <TiSocialInstagram className={styles.icon} />
             </a>
           </div>

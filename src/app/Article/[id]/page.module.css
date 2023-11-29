@@ -14,9 +14,7 @@
     font-weight: bold;
     margin-top: 16px;
 }
-.head .date{
-    
-}
+
 
 .cover {
     height: 350px;
@@ -29,12 +27,12 @@
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(10px);
+        
     }
 
     100% {
         opacity: 1;
-        transform: translateY(10px);
+        
     }
 
 }
@@ -72,4 +70,11 @@
     font-size: 30px;
     padding-top: 16px;
     padding-bottom: 8px;
+}
+@media screen and (max-width: 480px){
+    .head .desc{
+        display: block;
+        
+
+    }
 }
