@@ -1,10 +1,10 @@
-'use client';
+"use client";
 import styles from "./page.module.css";
 import Header from "./Components/Header/Header";
 import { Container } from "./Components/Container/Container";
 import { Card } from "./Components/Card/Card";
 import Footer from "./Components/Footer/Footer";
-import { useState ,useEffect } from 'react';
+import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function Home() {
@@ -12,17 +12,19 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [skip, setSkip] = useState(0);
 
-    const getData = () => {
-      fetch(`https://api.slingacademy.com/v1/sample-data/blog-posts?limit=9&offset=${skip}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setBlogs(data.blogs);
-          setLoading(false);
-        });
-    };
-    useEffect(() => {
-      getData();
-    }, [skip]);
+  const getData = () => {
+    fetch(
+      `https://api.slingacademy.com/v1/sample-data/blog-posts?limit=9&offset=${skip}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setBlogs([...blogs, ...data.blogs]);
+        setLoading(false);
+      });
+  };
+  useEffect(() => {
+    getData();
+  }, [skip]);
   return (
     <div className={styles.home}>
       <Header />
@@ -38,25 +40,26 @@ export default function Home() {
       </div>
       <Container>
         <div className={styles.over}>
-        <InfiniteScroll
-          dataLength={blogs.length}
-          next={() => {
-            setSkip(skip + 9);
-          }}
-          hasMore={true}
-        >
-          {loading && (
-            <div className={styles.loading}>
-              {" "}
-              <span className={styles.loader}></span>
+          <InfiniteScroll
+            dataLength={blogs.length}
+            next={() => {
+              setSkip(skip + 9);
+            }}
+            hasMore={true}
+            className={styles.over}
+          >
+            {loading && (
+              <div className={styles.loading}>
+                {" "}
+                <span className={styles.loader}></span>
+              </div>
+            )}
+            <div className={styles.grid}>
+              {blogs.map((blog, i) => (
+                <Card key={i} blog={blog} />
+              ))}
             </div>
-          )}
-          <div className={styles.grid}>
-            {blogs.map((blog, i) => (
-              <Card key={i} blog={blog} />
-            ))}
-          </div>
-        </InfiniteScroll>
+          </InfiniteScroll>
         </div>
       </Container>
       <Footer />
