@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0rem;
+    padding: 1rem;
 }
 
 .nav ul {
@@ -30,10 +30,18 @@
 .nav ul li a:hover {
     color: blue;
 }
+@media screen and (max-width: 1080px){
+    .head {
+            padding:16px;
+        }
+}
 @media screen and (max-width: 480px){
     .nav ul{
         display: block;
         padding-right: 16px;
+    }
+    .head{
+        padding:16px;
     }
 
 }

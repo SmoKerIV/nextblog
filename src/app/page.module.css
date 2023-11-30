@@ -1,24 +1,29 @@
-.home .cover{
+.home .cover {
     height: 400px;
     background-color: #efefef;
     position: relative;
 }
-.home .cover .overlay{
+
+.home .cover .overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
 }
+
 .home .cover .overlay .title {
     margin-top: 200px;
 }
-.home .cover .overlay .title h1{
+
+.home .cover .overlay .title h1 {
     font-size: 30px;
 }
-.home .cover .overlay .title p{
+
+.home .cover .overlay .title p {
     font-size: 30px;
 }
+
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -26,17 +31,20 @@
     position: relative;
     animation: fadIn 1.5s;
 }
+
 .over {
-        margin-top: -60px;
+    margin-top: -60px;
 }
-.loading{
+
+.loading {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 330px;
     width: 100%;
-    
+
 }
+
 .loader {
     padding: 60px auto;
     width: calc(100px - 14px);
@@ -59,19 +67,38 @@
     animation: spin 0.5s infinite linear;
 }
 
-@media screen and (max-width: 1240px) {
+@media screen and (max-width: 1000px) {
     .grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 60px 40px;
     }
+        .over {
+            margin-top: -100px;
+        }
 }
 
 @media screen and (max-width: 480px) {
     .grid {
         grid-template-columns: repeat(1, 1fr);
-        gap: 60px 0;
+        gap: 50px 0;
+    }
+        .over {
+            margin-top: -100px;
+        }
+
+    .home .cover .overlay .title {
+        margin-top: 100px;
+    }
+
+    .home .cover .overlay .title h1 {
+        font-size: 30px;
+    }
+
+    .home .cover .overlay .title p {
+        font-size: 25px;
     }
 }
+
 @keyframes flippx {
 
     0%,
@@ -90,6 +117,7 @@
         transform: rotate(360deg);
     }
 }
+
 @keyframes fadIn {
     0% {
         opacity: 0;
